@@ -1,33 +1,35 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <h3>Login</h3>
+    <h3>Sign up</h3>
     <input type="email" placeholder="Email" v-model="email">
+    <input type="text" placeholder="Display name" v-model="displayName">
     <input type="password" placeholder="Password" v-model="password">    
-    <button v-if="!isPending">Login</button>
+    <button v-if="!isPending">Sign up</button>
     <button v-if="isPending" disabled>Loading</button>
     <div v-if="error" class="error">{{ error }}</div>
   </form>
 </template>
 
 <script>
-import useLogin from '@/composables/useLogin'
 import { ref } from '@vue/reactivity'
+import useSignup from '@/composables/useSignup'
 
 export default {
   setup() {
-    const { error, login, isPending } = useLogin()
+    const { error, signup, isPending } = useSignup()
 
     const email = ref('')
     const password = ref('')
+    const displayName = ref('')
 
     const handleSubmit = async () => {
-      const res = await login(email.value, password.value)
+      const res = await signup(email.value, password.value, displayName.value)
       if (!error.value) {
-        console.log('user logged in')
+        console.log('User signed up')
       }
     }
 
-    return { email, password, handleSubmit, error, isPending }
+    return { email, password, displayName, isPending, error, handleSubmit }
   }
 }
 </script>
