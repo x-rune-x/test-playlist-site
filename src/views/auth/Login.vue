@@ -25,6 +25,9 @@ export default {
       if (!error.value) {
         console.log('user logged in')
       }
+      else {
+        console.log(error.value)
+      }
     }
 
     return { email, password, handleSubmit, error, isPending }
