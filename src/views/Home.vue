@@ -6,7 +6,8 @@
       {{ error.value }}
     </div>
     <div v-else>
-      <p v-for="doc in documents" :key="doc.id">{{ doc.title }}</p>
+      <ListView :playlists="documents" />
+      <!-- <p v-for="doc in documents" :key="doc.id">{{ doc.title }}</p> -->
     </div>
 
   </div>
@@ -14,9 +15,11 @@
 
 <script>
 import getCollection from '../composables/getCollection'
+import ListView from '../components/ListView.vue'
 
 export default { 
   name: 'Home',
+  components: { ListView },
   setup() {
     const { documents, error } = getCollection('playlists')
 

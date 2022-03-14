@@ -2,13 +2,14 @@
   <div class="navbar">
     <nav>
       <img src="@/assets/anzus1.png" alt="rune">
-      <h1><router-link :to="{ name: 'Home' }"></router-link>Music Mixer</h1>
+      <h1><router-link :to="{ name: 'Home' }">Music Mixer</router-link></h1>
       <div class="links">
         <div v-if="!user">
           <router-link class="btn" :to="{ name: 'Signup' }">Sign up</router-link>
           <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
         </div>       
         <div v-else>
+          <router-link :to="{ name: 'CreatePlaylist' }">Create playlist</router-link>
           <button @click="handleLogout">Logout</button>
         </div>        
       </div>
@@ -46,7 +47,7 @@ export default {
 </script>
 
 <style scoped>
-  navbar {
+  .navbar {
     padding: 16px 10px;
     margin-bottom: 60px;
     background: white;
