@@ -8,8 +8,10 @@
           <router-link class="btn" :to="{ name: 'Signup' }">Sign up</router-link>
           <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
         </div>       
-        <div v-else>
+        <div v-else> 
+          <p>Logged in as {{ user.displayName }}</p>         
           <router-link :to="{ name: 'CreatePlaylist' }">Create playlist</router-link>
+          <router-link :to="{ name: 'UserPlaylists' }">My playlists</router-link>                    
           <button @click="handleLogout">Logout</button>
         </div>        
       </div>
